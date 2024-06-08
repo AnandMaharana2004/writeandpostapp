@@ -1,0 +1,43 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.wrapper{
+    height: 100vh;
+    width: 100vw;
+    /* background-color: black; */
+    background-color: rgb(20, 19, 19);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+.navbar{
+    /* background-color: black; */
+    color: white;
+    height: auto;
+    width: 80%;
+    background-color: aquamarine;
+    margin-left: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+    
+}
+.navbar a {
+    text-decoration: none;
+    margin: 1rem;
+    border: 2px solid #fff;
+    padding: .5rem;
+    background-color: blueviolet;
+    color: #fff;
+}
+.logout {
+    background-color: rgba(255, 0, 0, 0.484);
+}
+textarea{
+    width: 760px;
+    height: 18px;
+}

@@ -1,0 +1,61 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.wrapper{
+    background-color: rgb(20, 19, 19);
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+.heading{
+    color: #fff;
+    
+}
+
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.create{
+    font-size: 20px;
+    color: rgba(121, 121, 229, 0.708);
+    text-decoration: none;
+}
+.create:hover{
+    color: rgb(145, 145, 232);
+}
+.input {
+    height: 30px;
+    width: 240px;
+    padding: 2.5px;
+    outline: none;
+    border: 1.5px solid #fff;
+    background-color: #ffffff00;
+    color: #fff;
+    margin: 10px;
+    border-radius: 4px;
+}
+.loginButton {
+    background-color: rgb(96, 174, 226);
+    height: 25px;
+    width: 70px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.loginButton:hover{
+    background-color: rgba(96, 174, 226, 0.699);
+        
+}

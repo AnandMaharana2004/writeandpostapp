@@ -10,8 +10,8 @@
     <div class="wrapper">
 
         <div class="navbar">
-            <a href="/create">create new account</a>
-            <a href="/logout">logout</a>
+            <a href="/create" class="common">create new account</a>
+            <a href="/logout" class=" common logout">logout</a>
         </div>
 
         <h2>Jhon doe</h2>
@@ -19,14 +19,17 @@
         <h4>create your post</h4>
         <form action="/post">
             <textarea name="postWrite" id="" placeholder="write what on your mind"></textarea>
-            <input type="submit" value="submit">
+            <input type="submit" value="submit" class="loginButton">
         </form>
         <div class="postsContainer">
             <div class="post">
                 <h3>@username</h3>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse velit voluptatibus magnam laboriosam itaque blanditiis quibusdam optio maiores, consequuntur totam.</p>
-                <a href="/like">likes</a>
-                <a href="/edit">adit-post</a>
+                
+                <div class="likecontainer">
+                    <a href="/like">likes</a>
+                    <a href="/edit" ">adit-post</a>
+                </div>
             </div>
         </div>
 

@@ -15,17 +15,18 @@ app.use(cookieParser())
 
 app.set("view engine", "ejs")
 
-app.get('/',function(req, res){
+app.get('/' ,function(req, res){
     res.render("index")
 })
 app.get('/create',function(req, res){
     res.render("create")
 })
-app.get('/profile',function(req, res){
+app.get('/profile', cheakLogedin , async function(req, res){
     res.render("profile")
+    // res.send(req.usercookie)
 })
 
-app.post('/login',async function(req, res){
+app.post('/login' ,async function(req, res){
     let {email, password} = req.body
     let oldUser = await userModel.findOne({email})
     if(!oldUser){
@@ -56,12 +57,29 @@ app.post('/create', function(req, res){
                 name,
                 age
             })
-            let token = jwt.sign({email, userid : oldUser._id}, "asss")
-                res.cookie("token",token)
-            res.send(user)
+            let token = jwt.sign({email, userid : user._id}, "asss")
+            res.cookie("token",token)
+            res.redirect("profile")
         })
     })
 })
+
+app.get('/logout',function(req, res){
+    res.cookie("token", "")
+    res.redirect("/")
+})
+
+function cheakLogedin(req, res, next){
+    let token = req.cookies.token
+    if(token === ""){
+        res.redirect("/")
+    }
+    else{
+        let data = jwt.verify(token, "asss")
+        req.usercookie = data 
+        next()
+    }
+}
 
 
 app.listen("3000")

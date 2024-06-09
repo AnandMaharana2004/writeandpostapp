@@ -11,6 +11,7 @@
     color: #fff;
     display: flex;
     flex-direction: column;
+    gap: 10px;
     padding-left: 20px;
 }
 .navbar{
@@ -18,7 +19,7 @@
     color: white;
     height: auto;
     width: 80%;
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
     margin-left: 10%;
     display: flex;
     align-items: center;
@@ -26,18 +27,77 @@
     flex-direction: row;
     
 }
-.navbar a {
+.common {
     text-decoration: none;
     margin: 1rem;
     border: 2px solid #fff;
     padding: .5rem;
     background-color: blueviolet;
     color: #fff;
+    border-radius: 5px;
 }
 .logout {
     background-color: rgba(255, 0, 0, 0.484);
 }
 textarea{
-    width: 760px;
-    height: 18px;
+    height: 30px;
+    width: 1404px;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #fff;
+    border-top: none;
+    border-radius: none;
+    outline: none;
+    padding: 5px;
+    /* border-radius: 5px; */
+    background-color: transparent;
+    font-size: 15px;
+    color: #fff;
+    margin:10px 0 10px 0px;
+    }
+    
+.post{
+    /* border: 2px solid #fff; */
+    margin:10px 0 10px 0px;
+    /* padding: 10px; */
+    display: flex;
+    align-items:flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+}
+
+.likecontainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.likecontainer a{
+    border: 1px solid #fff;
+    /* padding-left:9px;
+    padding-right: 9px; */
+    padding: 2px 9px 2px 9px ;
+    background-color: burlywood;
+    text-decoration: none;
+    border-radius: 2px;
+
+}
+.loginButton {
+    background-color: rgb(96, 174, 226);
+    height: 25px;
+    width: 70px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.loginButton:hover{
+    background-color: rgba(96, 174, 226, 0.699);
+        
+}
+.logout{
+    background-color: red;
 }

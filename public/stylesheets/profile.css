@@ -65,7 +65,7 @@ textarea{
     justify-content: center;
     flex-direction: column;
     gap: 10px;
-    width: 90%;
+    width: 900px;
 }
 
 .likecontainer {
@@ -88,11 +88,12 @@ textarea{
 .loginButton {
     background-color: rgb(96, 174, 226);
     height: 25px;
-    width: 70px;
+    /* width: 100px; */
     outline: none;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    padding: 3px;
 }
 .loginButton:hover{
     background-color: rgba(96, 174, 226, 0.699);
@@ -100,4 +101,12 @@ textarea{
 }
 .logout{
     background-color: red;
+}
+p{
+    color: #fff;
+    font-size: 15px;
+}
+
+.username{
+    color: #ffffffa9;
 }

@@ -18,12 +18,14 @@ app.set("view engine", "ejs")
 app.get('/' ,function(req, res){
     res.render("index")
 })
+
 app.get('/create',function(req, res){
     res.render("create")
 })
+
 app.get('/profile', cheakLogedin , async function(req, res){
-    res.render("profile")
-    // res.send(req.usercookie)
+    let user = await userModel.findOne({email : req.usercookie.email}).populate("posts")
+    res.render("profile", {user})
 })
 
 app.post('/login' ,async function(req, res){
@@ -69,6 +71,19 @@ app.get('/logout',function(req, res){
     res.redirect("/")
 })
 
+app.post('/post', cheakLogedin ,async function(req, res){
+    let {content } = req.body
+    let user = await userModel.findOne({email : req.usercookie.email})
+    let post = await postModel.create({
+        user : user._id,
+        content 
+    })
+    user.posts.push(post._id)
+    await user.save()
+    res.redirect("profile")
+
+})
+
 function cheakLogedin(req, res, next){
     let token = req.cookies.token
     if(token === ""){
@@ -83,3 +98,4 @@ function cheakLogedin(req, res, next){
 
 
 app.listen("3000")
+

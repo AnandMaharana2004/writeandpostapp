@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express")
 const app = express()
 const cookieParser = require("cookie-parser")
@@ -7,6 +8,8 @@ const path = require("path")
 
 const userModel = require("./models/user.model")
 const postModel = require("./models/post.model")
+
+const port = process.env.port
 
 app.use(express.json())
 app.use(express.urlencoded({extended : true}))
@@ -97,5 +100,4 @@ function cheakLogedin(req, res, next){
 }
 
 
-app.listen("3000")
-
+app.listen(`${port}`)

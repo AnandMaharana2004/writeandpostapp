@@ -10,6 +10,7 @@
     <div class="wrapper">
 
         <div class="navbar">
+            <a href="/editprofile" class="common yellow">Edit Proifle</a>
             <a href="/create" class="common">create new account</a>
             <a href="/logout" class=" common logout">logout</a>
         </div>
@@ -25,10 +26,10 @@
            
             <% user.posts.forEach(function(post) { %>
                 <div class="post">
-                    <h4 class="username"><%= user.email %></h4>
+                    <h5 class="username"><%= user.email %></h5>
                     <p><%= post.content %></p>
                     <div class="likecontainer">
-                        <a href="/like">likes</a>
+                        <a href="/like/<%= user._id %>">likes</a>
                         <a href="/edit">edit post</a>
                     </div>
                 </div>
@@ -36,8 +37,6 @@
 
             </div>
         </div>
-
-
 
     </div>
 </body>

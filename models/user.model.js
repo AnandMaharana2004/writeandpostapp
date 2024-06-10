@@ -1,6 +1,7 @@
+const db_name = process.env.DB_NAME
 const mongoose = require("mongoose")
 
-mongoose.connect('mongodb://127.0.0.1:27017/writeandpost');
+mongoose.connect(`mongodb://127.0.0.1:27017/${db_name}`);
 
 const userSchema = mongoose.Schema({
     name : {

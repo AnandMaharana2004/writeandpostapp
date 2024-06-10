@@ -24,12 +24,16 @@
         </form>
         <div class="postsContainer">
            
-            <% user.posts.forEach(function(post) { %>
+            <% user.posts.reverse().forEach(function(post) { %>
                 <div class="post">
                     <h5 class="username"><%= user.email %></h5>
                     <p><%= post.content %></p>
+                    <small> <%= post.likes.length %> likes </small>
                     <div class="likecontainer">
-                        <a href="/like/<%= user._id %>">likes</a>
+                        <a href="/like/<%= post._id %>">
+                            <%= post.likes.indexOf(user._id) === -1 ? "like" : "dislick" %>
+                        </a>
+
                         <a href="/edit/<%= post._id %>">edit post</a>
                     </div>
                 </div>

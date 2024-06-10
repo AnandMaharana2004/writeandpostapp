@@ -99,17 +99,30 @@ app.get('/edit/:id', cheakLogedin ,async function(req, res){
     res.redirect("/profile")
  })
 
+app.get('/like/:id',cheakLogedin,async function(req, res){
+    let post = await postModel.findOne({_id : req.params.id})
+
+    if(post.likes.indexOf(req.usercookie.userid) === -1){
+        post.likes.push(req.usercookie.userid)
+    }
+    else {
+        post.likes.splice(post.likes.indexOf(req.usercookie.userid),1);
+    }
+    await post.save()
+    res.redirect("/profile")
+    // console.log(post.likes)
+})
+
 function cheakLogedin(req, res, next){
     let token = req.cookies.token
     if(token === ""){
         res.redirect("/")
     }
     else{
-        let data = jwt.verify(token, "asss")
+        let data = jwt.verify(token, `${secret}`)
         req.usercookie = data 
         next()
     }
 }
-
 
 app.listen(`${port}`)

@@ -6,7 +6,13 @@ const postSchema = mongoose.Schema({
     },
     content : {
         type : String,
-    }
+    },
+    likes : [
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "user"
+        }
+    ]
 })
 
 module.exports = mongoose.model("post",postSchema)

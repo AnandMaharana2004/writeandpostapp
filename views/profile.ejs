@@ -30,7 +30,7 @@
                     <p><%= post.content %></p>
                     <div class="likecontainer">
                         <a href="/like/<%= user._id %>">likes</a>
-                        <a href="/edit">edit post</a>
+                        <a href="/edit/<%= post._id %>">edit post</a>
                     </div>
                 </div>
             <% }) %>

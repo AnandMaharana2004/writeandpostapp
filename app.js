@@ -7,9 +7,11 @@ const bcrypt = require("bcrypt")
 const path = require("path")
 
 const userModel = require("./models/user.model")
-const postModel = require("./models/post.model")
+const postModel = require("./models/post.model");
+const { render } = require("ejs");
 
 const port = process.env.port
+const secret = process.env.secret
 
 app.use(express.json())
 app.use(express.urlencoded({extended : true}))
@@ -41,7 +43,7 @@ app.post('/login' ,async function(req, res){
     else{
         bcrypt.compare(password , oldUser.password,function(err, result){
             if(result){
-                let token = jwt.sign({email, userid : oldUser._id}, "asss")
+                let token = jwt.sign({email, userid : oldUser._id}, `${secret}`)
                 res.cookie("token",token)
                 res.redirect("profile")
             }
@@ -62,9 +64,9 @@ app.post('/create', function(req, res){
                 name,
                 age
             })
-            let token = jwt.sign({email, userid : user._id}, "asss")
+            let token = jwt.sign({email, userid : user._id}, `${secret}`)
             res.cookie("token",token)
-            res.redirect("profile")
+            res.redirect("/profile")
         })
     })
 })
@@ -83,9 +85,19 @@ app.post('/post', cheakLogedin ,async function(req, res){
     })
     user.posts.push(post._id)
     await user.save()
-    res.redirect("profile")
+    res.redirect("/profile")
 
 })
+
+app.get('/edit/:id', cheakLogedin ,async function(req, res){
+    let post =  await postModel.findOne({_id : req.params.id}).populate("user")
+    res.render("edit", {post})
+ })
+
+ app.post('/updatePost/:id', cheakLogedin, async function(req, res){
+    let updatedPost = await postModel.findOneAndUpdate({_id : req.params.id}, {content : req.body.content})
+    res.redirect("/profile")
+ })
 
 function cheakLogedin(req, res, next){
     let token = req.cookies.token

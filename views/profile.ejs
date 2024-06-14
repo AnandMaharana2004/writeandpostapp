@@ -10,9 +10,13 @@
     <div class="wrapper">
 
         <div class="navbar">
-            <a href="/editprofile" class="common yellow">Edit Proifle</a>
             <a href="/create" class="common">create new account</a>
             <a href="/logout" class=" common logout">logout</a>
+        </div>
+
+        <div class="profilepic">
+            <img src="/images/uplods/<%= user.profilepic %>" alt="">
+            <a href="/profile/upload" class="editProfilePic">edit profile pic</a>
         </div>
 
         <h2> <%= user.name %> </h2>

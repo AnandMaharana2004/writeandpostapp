@@ -8,6 +8,8 @@ const path = require("path")
 
 const userModel = require("./models/user.model")
 const postModel = require("./models/post.model");
+const multerconfig = require("./config/multer.comfig")
+
 const { render } = require("ejs");
 
 const port = process.env.port
@@ -111,6 +113,23 @@ app.get('/like/:id',cheakLogedin,async function(req, res){
     await post.save()
     res.redirect("/profile")
     // console.log(post.likes)
+})
+
+app.get('/cheak',cheakLogedin,async function(req, res){
+    let user = await userModel.findOne({email : req.usercookie.email})
+    console.log(user.profilepic)
+})
+
+app.get('/profile/upload',cheakLogedin,function(req, res){
+    res.render("profilepicUpload")
+})
+
+app.post('/upload',cheakLogedin,multerconfig.single("image"),async function(req, res){
+    console.log(req.file)
+    let user = await userModel.findOne({email : req.usercookie.email})
+    user.profilepic = req.file.filename
+    await user.save()
+    res.redirect("/profile")
 })
 
 function cheakLogedin(req, res, next){

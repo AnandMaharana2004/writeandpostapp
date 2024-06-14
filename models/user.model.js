@@ -20,6 +20,10 @@ const userSchema = mongoose.Schema({
         type : Number,
         require : true
     },
+    profilepic : {
+        type : String,
+        default : "default.png"
+    },
     posts : [
         {
             type : mongoose.Schema.Types.ObjectId,

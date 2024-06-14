@@ -115,10 +115,6 @@ app.get('/like/:id',cheakLogedin,async function(req, res){
     // console.log(post.likes)
 })
 
-app.get('/cheak',cheakLogedin,async function(req, res){
-    let user = await userModel.findOne({email : req.usercookie.email})
-    console.log(user.profilepic)
-})
 
 app.get('/profile/upload',cheakLogedin,function(req, res){
     res.render("profilepicUpload")
